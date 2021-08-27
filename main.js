@@ -1,14 +1,14 @@
-/*  abre e fecha o menu quando clicar no icone: hamburguer e x */
+/* Abre e fecha o menu lateral */
 const nav = document.querySelector('#header nav')
-const toggle = document.querySelectorAll('nav .toggle')
+const toogle = document.querySelectorAll('nav .toogle')
 
-for (const element of toggle) {
+for (const element of toogle) {
   element.addEventListener('click', function () {
     nav.classList.toggle('show')
   })
 }
 
-/* quando clicar em um item do menu, esconder o menu */
+/* Quando clicar em um item ddo menu, esconder o menu */
 const links = document.querySelectorAll('nav ul li a')
 
 for (const link of links) {
@@ -17,21 +17,19 @@ for (const link of links) {
   })
 }
 
-/* mudar o header da página quando der scroll */
+/* Mudar o header da página quando der scroll */
 const header = document.querySelector('#header')
 const navHeight = header.offsetHeight
-
 function changeHeaderWhenScroll() {
   if (window.scrollY >= navHeight) {
-    // scroll é maior que a altura do header
+    // Scroll é maior que a altura do header
     header.classList.add('scroll')
   } else {
-    // menor que a altura do header
+    // Menor que a altura do header
     header.classList.remove('scroll')
   }
 }
-
-/* Testimonials carousel slider swiper */
+/* Testimonials swiper */
 const swiper = new Swiper('.swiper-container', {
   slidesPerView: 1,
   pagination: {
@@ -47,7 +45,7 @@ const swiper = new Swiper('.swiper-container', {
   }
 })
 
-/* ScrollReveal: Mostrar elementos quando der scroll na página */
+/* Mostrar elementos quando der scroll na página */
 const scrollReveal = ScrollReveal({
   origin: 'top',
   distance: '30px',
@@ -57,18 +55,17 @@ const scrollReveal = ScrollReveal({
 
 scrollReveal.reveal(
   `#home .image, #home .text,
-  #about .image, #about .text,
-  #services header, #services .card,
-  #testimonials header, #testimonials .testimonials
-  #contact .text, #contact .links,
-  footer .brand, footer .social
-  `,
+    #about .image, #about .text,
+    #services header, #services .card,
+    #testimonials header, #testimonials .testimonials,
+    #contact .text, #contact .links,
+    footer .brand, footer .social
+    `,
   { interval: 100 }
 )
 
 /* Botão voltar para o topo */
 const backToTopButton = document.querySelector('.back-to-top')
-
 function backToTop() {
   if (window.scrollY >= 560) {
     backToTopButton.classList.add('show')
@@ -77,8 +74,11 @@ function backToTop() {
   }
 }
 
-/* Menu ativo conforme a seção visível na página */
-const sections = document.querySelectorAll('main section[id]')
+/* Menu ativo conforme a seção que estiver visível na sala */
+const sections =
+  document.querySelectorAll(
+    'main section[id]'
+  ) /*Todas as seções que contenham um id qualquer */
 function activateMenuAtCurrentSection() {
   const checkpoint = window.pageYOffset + (window.innerHeight / 8) * 4
 
@@ -102,7 +102,7 @@ function activateMenuAtCurrentSection() {
   }
 }
 
-/* When Scroll */
+/* Função para chamar as duas funções anteriores de uma vez só */
 window.addEventListener('scroll', function () {
   changeHeaderWhenScroll()
   backToTop()
